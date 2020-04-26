@@ -1,14 +1,19 @@
 <?php
 
-if(isset($_POST['login-submit'])){
+$data = json_decode(file_get_contents('php://input'));
 
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+
+if(isset($data->submit)){
+
+  $username = $data->username;
+  $password = $data->password;
 
   require 'db.php';
 
   if(empty($username) || empty($password)){
-    header("Location: ../../FrontEnd/index.html?login=error&error=empty");
+    $response = array('status' => 'error' , 'error' => 'empty' );
+    echo json_encode($response);
+    // header("Location: ../../FrontEnd/index.html?status=error&error=empty");
   }else{
     $stmt = $conn->prepare("SELECT * FROM users WHERE uuname=?");
     $stmt->bind_param("s", $username);
@@ -29,15 +34,23 @@ if(isset($_POST['login-submit'])){
         $stmt->bind_param("sss", $hashedToken, $privkey, $username);
         $stmt->execute();
 
-        header("Location: ../../FrontEnd/index.html?login=success&name=$name&username=$username&token=$token");
+        $response = array('status' => 'success' , 'name' => $name, 'username' => $username, 'token' => $token );
+        echo json_encode($response);
+
+        // header("Location: ../../FrontEnd/index.html?status=success&name=$name&username=$username&token=$token");
       }
       else{
-        header("Location: ../../FrontEnd/index.html?login=error&error=incorrect");
+        $response = array('status' => 'error' , 'error' => 'incorrect' );
+        echo json_encode($response);
+
+        // header("Location: ../../FrontEnd/index.html?status=error&error=incorrect");
       }
 
     }
     else{
-      header("Location: ../../FrontEnd/index.html?login=error&error=incorrect");
+      $response = array('status' => 'error' , 'error' => 'incorrect' );
+      echo json_encode($response);
+      // header("Location: ../../FrontEnd/index.html?status=error&error=incorrect");
     }
   }
 

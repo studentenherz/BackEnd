@@ -1,13 +1,17 @@
 <?php
 
-if(isset($_POST['submit-signup'])){
+$data = json_decode(file_get_contents('php://input'));
 
-  $name = $_POST['name'];
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+if(isset($data->submit)){
+
+  $name = $data->name;
+  $username = $data->username;
+  $password = $data->password;
 
   if(empty($name) || empty($username) || empty($password)){
-    header("Location: ../../FrontEnd/registration/signup.html?status=error&error=empty");
+    $response = array('status' => 'error' , 'error' => 'empty' );
+    echo json_encode($response);
+    // header("Location: ../../FrontEnd/registration/signup.html?status=error&error=empty");
   }else{
     require 'db.php';
 
@@ -21,9 +25,11 @@ if(isset($_POST['submit-signup'])){
     $stmt->close();
     $conn->close();
 
-    header("Location: ../../FrontEnd/registration/signup.html?status=success");
+    $response = array('status' => 'success');
+    echo json_encode($response);
+    // header("Location: ../../FrontEnd/registration/signup.html?status=success");
   }
 }
 else {
-  header("Location: ../../FrontEnd/registration/signup.html?status=error&error=empty");
+  header("Location: ../../FrontEnd/index.html");
 }
