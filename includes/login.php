@@ -56,5 +56,6 @@ if(isset($data->submit)){
 
 }
 else{
-  header("Location: ../../FrontEnd/index.html");
+  // header("Location: ../../FrontEnd/index.html");
+  echo "Hola";
 }
