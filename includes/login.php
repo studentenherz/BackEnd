@@ -4,7 +4,7 @@
 // header("Access-Control-Allow-Methods: POST");
 // header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type");
 
-echo "a ver"
+echo "a ver";
 
 // $data = json_decode(file_get_contents('php://input'));
 //
