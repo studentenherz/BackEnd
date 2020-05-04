@@ -15,9 +15,9 @@ if(isset($data->logout)){
       $stmt = $conn->prepare("DELETE FROM sessions WHERE token=?");
       $stmt->bind_param("s", $row["token"]);
       $stmt->execute();
-      echo "donde";
+      exit("done");
     }
   }
 }else{
-  header("Location: ../../FrontEnd/index.html");
+  header("Location: ".$frontEndUrl. "index.html");
 }
