@@ -12,7 +12,7 @@ if(isset($data->submit)){
 
   if(empty($username) || empty($password)){
     $response = array('status' => 'error' , 'error' => 'empty' );
-    echo json_encode($response);
+    exit(json_encode($response));
     // header("Location: ../../FrontEnd/index.html?status=error&error=empty");
   }else{
     $stmt = $conn->prepare("SELECT * FROM users WHERE uuname=?");
@@ -35,13 +35,13 @@ if(isset($data->submit)){
         $stmt->execute();
 
         $response = array('status' => 'success' , 'name' => $name, 'username' => $username, 'token' => $token );
-        echo json_encode($response);
+        exit(json_encode($response));
 
         // header("Location: ../../FrontEnd/index.html?status=success&name=$name&username=$username&token=$token");
       }
       else{
         $response = array('status' => 'error' , 'error' => 'incorrect' );
-        echo json_encode($response);
+        exit(json_encode($response));
 
         // header("Location: ../../FrontEnd/index.html?status=error&error=incorrect");
       }
@@ -49,7 +49,7 @@ if(isset($data->submit)){
     }
     else{
       $response = array('status' => 'error' , 'error' => 'incorrect' );
-      echo json_encode($response);
+      exit(json_encode($response));
       // header("Location: ../../FrontEnd/index.html?status=error&error=incorrect");
     }
   }

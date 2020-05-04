@@ -24,15 +24,17 @@ if(isset($_POST['upload_image'])){
 
       $allowed = array('jpg', 'jpeg', 'png');
 
-      $filesFolder = '../avatar/';
-
       if(in_array($fileActualExt, $allowed)){
         if($fileError === 0){
           if($fileSize < 100000){
-            $newFileName = $username.".".$fileActualExt;
+            $newFileName = uniqid($username).".".$fileActualExt;
             $fileDestination = $filesFolder.$newFileName;
             move_uploaded_file($fileTmpName, $fileDestination);
-            echo "success!";
+
+            $sql = "UPDATE users SET avatar='$newFileName' WHERE uuname='$username'";
+            $conn->query($sql);
+
+            exit("success?");
           }
           else{
             echo "too big file";

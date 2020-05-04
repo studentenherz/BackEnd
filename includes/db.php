@@ -17,3 +17,4 @@ $conn = new mysqli($dbservername, $dbusername, $dbpassword, $dbname);
 
 $frontEndUrl = "http://127.0.0.1/FrontEnd/";
 // $frontEndUrl = "https://studentenherz.github.io/FrontEnd/";
+$filesFolder = '../avatar/';
