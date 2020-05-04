@@ -1,7 +1,9 @@
 <?php
 
-print_t( $_POST);
-echo $_SERVER['HTTP_ORIGIN'];
+echo "hey!";
+
+// print_t( $_POST);
+// echo $_SERVER['HTTP_ORIGIN'];
 
 // header("Access-Control-Allow-Origin: *");
 // $data = json_decode(file_get_contents('php://input'));
