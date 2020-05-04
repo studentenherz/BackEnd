@@ -1,5 +1,7 @@
 <?php
 
+
+header("Access-Control-Allow-Origin: *");
 echo "hey!";
 
 // print_t( $_POST);
