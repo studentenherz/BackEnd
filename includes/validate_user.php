@@ -1,7 +1,11 @@
 <?php
 
-require 'db.php';
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type");
+
+require 'db.php';
+
 if(isset($_POST['validate'])){
   $username  = $_POST['username'];
   $token  = $_POST['token'];

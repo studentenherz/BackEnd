@@ -1,6 +1,9 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type");
+
 require "db.php";
 
 if(isset($_POST['upload_image'])){
