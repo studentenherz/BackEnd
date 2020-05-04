@@ -1,8 +1,8 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type");
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: X-PINGOTHER, Content-Type');
 
 $data = json_decode(file_get_contents('php://input'));
 
@@ -17,7 +17,6 @@ if(isset($data->submit)){
   if(empty($username) || empty($password)){
     $response = array('status' => 'error' , 'error' => 'empty' );
     exit(json_encode($response));
-    // header("Location: ../../FrontEnd/index.html?status=error&error=empty");
   }else{
     $stmt = $conn->prepare("SELECT * FROM users WHERE uuname=?");
     $stmt->bind_param("s", $username);
@@ -40,26 +39,20 @@ if(isset($data->submit)){
 
         $response = array('status' => 'success' , 'name' => $name, 'username' => $username, 'token' => $token );
         exit(json_encode($response));
-
-        // header("Location: ../../FrontEnd/index.html?status=success&name=$name&username=$username&token=$token");
       }
       else{
         $response = array('status' => 'error' , 'error' => 'incorrect' );
         exit(json_encode($response));
-
-        // header("Location: ../../FrontEnd/index.html?status=error&error=incorrect");
       }
 
     }
     else{
       $response = array('status' => 'error' , 'error' => 'incorrect' );
       exit(json_encode($response));
-      // header("Location: ../../FrontEnd/index.html?status=error&error=incorrect");
     }
   }
 
 }
 else{
   header("Location: ".$frontEndUrl. "index.html");
-  // echo "Hola";
 }
