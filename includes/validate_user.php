@@ -1,7 +1,7 @@
 <?php
 
 require 'db.php';
-
+header("Access-Control-Allow-Origin: *");
 if(isset($_POST['validate'])){
   $username  = $_POST['username'];
   $token  = $_POST['token'];

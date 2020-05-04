@@ -1,5 +1,6 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
 require "db.php";
 
 if(isset($_POST['upload_image'])){
