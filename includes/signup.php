@@ -34,6 +34,6 @@ if(isset($data->submit)){
     // header("Location: ../../FrontEnd/registration/signup.html?status=success");
   }
 }
-else {
-  header("Location: ".$frontEndUrl. "index.html");
-}
+// else {
+//   header("Location: ".$frontEndUrl. "index.html");
+// }

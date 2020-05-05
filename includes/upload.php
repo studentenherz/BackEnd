@@ -53,6 +53,7 @@ if(isset($_POST['upload_image'])){
       exit("done");
     }
   }
-}else{
-  header("Location: ".$frontEndUrl. "index.html");
 }
+// else{
+//   header("Location: ".$frontEndUrl. "index.html");
+// }

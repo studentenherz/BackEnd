@@ -33,6 +33,6 @@ if(isset($_POST['validate'])){
   }
 
 }
-else{
-  header("Location: ".$frontEndUrl. "index.html");
-}
+// else{
+//   header("Location: ".$frontEndUrl. "index.html");
+// }
