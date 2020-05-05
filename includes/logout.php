@@ -4,10 +4,6 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type");
 
-print_t( $_POST);
-echo $_SERVER['HTTP_ORIGIN'];
-
-header("Access-Control-Allow-Origin: *");
 $data = json_decode(file_get_contents('php://input'));
 
 if(isset($data->logout)){
@@ -26,6 +22,7 @@ if(isset($data->logout)){
       exit("done");
     }
   }
-}else{
-  header("Location: ".$frontEndUrl. "index.html");
 }
+// else{
+//   header("Location: ".$frontEndUrl. "index.html");
+// }
