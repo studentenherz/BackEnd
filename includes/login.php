@@ -53,6 +53,6 @@ if(isset($data->submit)){
   }
 
 }
-else{
-  header("Location: ".$frontEndUrl."index.html");
-}
+// else{
+//   header("Location: ".$frontEndUrl."index.html");
+// }
