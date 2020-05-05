@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, HEAD, OPTIONS");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
 $data = json_decode(file_get_contents('php://input'));
@@ -54,5 +54,5 @@ if(isset($data->submit)){
 
 }
 else{
-  header("Location: ".$frontEndUrl. "index.html");
+  header("Location: ".$frontEndUrl."index.html");
 }
