@@ -37,7 +37,7 @@ if(isset($data->submit)){
         $stmt->bind_param("sss", $hashedToken, $privkey, $username);
         $stmt->execute();
 
-        $response = array('status' => 'success' , 'name' => $name, 'username' => $username, 'token' => $token );
+        $response = array('status' => 'success' , 'name' => $name, 'username' => $username, 'token' => $token, 'avatar' => $row['avatar'] );
         exit(json_encode($response));
       }
       else{
